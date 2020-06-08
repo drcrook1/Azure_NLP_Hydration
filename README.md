@@ -1,6 +1,10 @@
 # Azure_NLP_Hydration
 Shows how to hydrate Azure based NLP solutions programatically for the purposes of deploying baseline to customers and then layering customizations on top.
 
+## Pre-Requisites
+1.  An Azure Subscription
+2.  A Service Principal: https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest
+
 ## How to Run Example
 1.  Rename "sample.dev.env" to "dev.env"
 2.  Populate dev.env with your variables for subscription etc.

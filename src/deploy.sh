@@ -23,7 +23,7 @@ cecho ()                     # Color-echo.
 cecho "Beginning Deploy Process..." $green
 cd /src/terraform
 echo $PWD
-bash terra_deploy.sh six
+bash terra_deploy.sh seven
 cecho "Completed Initial Deploy Process..." $green
 
 bf config:set:telemetry -d

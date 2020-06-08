@@ -26,14 +26,14 @@ resource "azurerm_cognitive_account" "luis" {
 
 }
 
-# resource "azurerm_cognitive_account" "qna" {
-#   name                = "${var.prefix}qna${var.postfix}"
-#   location            = azurerm_resource_group.rg.location
-#   resource_group_name = azurerm_resource_group.rg.name
-#   kind                = "QnAMaker"
+resource "azurerm_cognitive_account" "qna" {
+  name                = "${var.prefix}qna${var.postfix}"
+  location            = "westus"
+  resource_group_name = azurerm_resource_group.rg.name
+  kind                = "QnAMaker"
 
-#   sku_name = "S0"
+  sku_name = "S0"
 
-#   qna_runtime_endpoint = "https://www.mysamplesite.com/api/v1/qna"
+  qna_runtime_endpoint = "https://www.mysamplesite.com/api/v1/qna"
 
-# }
+}

@@ -22,7 +22,17 @@ resource "azurerm_cognitive_account" "luis" {
   resource_group_name = azurerm_resource_group.rg.name
   kind                = "LUIS"
 
-  sku_name = "S0"
+  sku_name = "F0"
+
+}
+
+resource "azurerm_cognitive_account" "luisauthor" {
+  name                = "${var.prefix}luisauth${var.postfix}"
+  location            = "westus"
+  resource_group_name = azurerm_resource_group.rg.name
+  kind                = "LUIS.Authoring"
+
+  sku_name = "F0"
 
 }
 
@@ -32,7 +42,7 @@ resource "azurerm_cognitive_account" "qna" {
   resource_group_name = azurerm_resource_group.rg.name
   kind                = "QnAMaker"
 
-  sku_name = "S0"
+  sku_name = "F0"
 
   qna_runtime_endpoint = "https://www.mysamplesite.com/api/v1/qna"
 

@@ -33,22 +33,18 @@ export TF_VAR_prefix="$PREFIX"
 export TF_VAR_postfix="$1"
 
 cecho "Starting Terraform Init..." $magenta
-# Commented out as not dealing with remote state for now.
-#terraform init -backend-config=storage_account_name="$TARGET_RS_STORAGE_ACCOUNT" -backend-config=container_name="$TARGET_RS_CONTAINER_NAME" -backend-config=key="$TARGET_RS_KEY" -backend-config=resource_group_name="$TARGET_RS_RG"
-
-# Commented out as we are not dealing with already existing infrastructure
-#terraform import azurerm_resource_group.rg /subscriptions/"$AZ_SUB_ID"/resourceGroups/"$PREFIX"-"$1" 2>/dev/null
 terraform init
 cecho "Completed Terraform Init..." $magenta
 
-# cecho "Starting Terraform Plan..." $magenta
-# terraform plan -out=tfplan.out -destroy
-# cecho "Completed Terraform Plan..." $magenta
 
 cecho "Starting Terraform Apply..." $magenta
-terraform apply -auto-approve #"tfplan.out"
+terraform apply -auto-approve
 cecho "Completed Terraform Apply..." $magenta
 
 cecho "Writing Key Outputs to Files for next stages" $magenta
-# mkdir -p ~/.kube
-terraform output luis_key
+
+LUIS_KEY=$(terraform output luis_key)
+LUIS_AUTHOR_KEY=$(terraform output luis_author_key)
+QNA_KEY=$(terraform output qna_key)
+
+jq -n --arg luis_key  "{'keys': {'luis_key' : $LUIS_KEY, 'luis_author_key' : $LUIS_AUTHOR_KEY 'qna_key' : $QNA_KEY}" > /src/terraform/terra_output_$1.json

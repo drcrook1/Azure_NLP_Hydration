@@ -1,0 +1,47 @@
+> # Reference Materials: https://github.com/microsoft/botframework-solutions/blob/master/samples/csharp/assistants/virtual-assistant/VirtualAssistantSample/Deployment/Resources/LU/en-us/General.lu
+
+
+## Cancel
+- cancel
+- stop
+- cancel cancel
+- cancel it
+- cancel that
+
+## Confirm
+- yes
+- do it
+- fine
+- go for it
+- great
+- i'm sure
+
+## GoBack
+- back
+- back please
+- back to
+- back to last
+- back to last step
+
+## Reject
+- i don't like it
+- i reject
+- negative
+- never
+- no
+
+## ShowNext
+- and after that
+- display more
+- displays more
+- give me more
+- go forward
+- go to the next one
+
+## StartOver
+- clear and start again
+- could you start it over
+- please begin again
+- restart
+- restart it
+- start again

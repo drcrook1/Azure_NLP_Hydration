@@ -1,9 +1,0 @@
-@ml position self, opponent
-@ml action self, opponent
-
-# MakeAction
-- I'm in {position:self = halfguard}, what should I do?
-- He just {action:opponent = swept} me!
-- She just {action:opponent = single legged} me!
-- I just got {action:self = collar sleeve}!
-

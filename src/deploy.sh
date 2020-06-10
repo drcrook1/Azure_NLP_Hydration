@@ -21,10 +21,17 @@ cecho ()                     # Color-echo.
 }
 
 cecho "Beginning Deploy Process..." $green
+POSTFIX=two
+
 cd /src/terraform
 echo $PWD
-bash terra_deploy.sh eleven
+bash terra_deploy.sh $POSTFIX
 cecho "Completed Initial Deploy Process..." $green
 
-bf config:set:telemetry -d
+TERRA_OUTPUT=$(cat /src/terraform/terra_output_$POSTFIX.json)
+
+cecho $TERRA_OUTPUT $magenta
+
+mkdir /src/cogsvc_data/out/en-us
+bf luis:convert --in /src/cogsvc_data/en-us/base.lu --culture "en-us" --out /src/cogsvc_data/out/en-us/base.lu
 bf --help

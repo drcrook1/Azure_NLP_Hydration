@@ -1,0 +1,8 @@
+simplejson
+quart
+botbuilder-ai>=4.9.1
+asyncio>=3.4.3
+botbuilder-core>=4.9.1
+botbuilder-schema>=4.9.1
+botframework-connector>=4.9.1
+gunicorn

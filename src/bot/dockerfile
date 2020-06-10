@@ -1,0 +1,30 @@
+#
+# Dockerfile for building the production container
+#
+
+FROM continuumio/miniconda3
+
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install curl -y
+RUN apt-get install build-essential libssl-dev libffi-dev unixodbc-dev -y
+RUN pip install --upgrade pip setuptools wheel
+RUN apt-get install build-essential -y
+
+RUN conda install psutil -y
+
+ADD requirements.txt /app/
+RUN pip install -r /app/requirements.txt
+
+EXPOSE 80
+
+COPY . /app/
+
+RUN chmod -x /app/run.py
+
+# Ensure that Python outputs everything that's printed inside
+# the application rather than buffering it.
+ENV PYTHONUNBUFFERED 1
+
+CMD ["python", "-m", "app.run"]
+#CMD ["gunicorn", "-b", "0.0.0.0:80", "-w", "4", "app.run:app"]

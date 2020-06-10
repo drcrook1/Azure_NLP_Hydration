@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 RUN apt-get update -y
 RUN apt-get upgrade -y
-RUN apt-get install wget gnupg unzip jq apt-transport-https dos2unix curl build-essential checkinstall libssl-dev -y
+RUN apt-get install wget gnupg unzip jq apt-transport-https dos2unix curl build-essential checkinstall libssl-dev jq -y
 
 ENV TERRAFORM_VERSION="0.12.23"
 RUN wget "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
